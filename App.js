@@ -1,12 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+
+import createExecelFile from "./index";
 
 export default function App() {
+  const data = [
+    {
+      name: "John",
+      city: "Seattle",
+    },
+    {
+      name: "Mike",
+      city: "Los Angeles",
+    },
+    {
+      name: "Zach",
+      city: "New York",
+    },
+  ];
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => createExecelFile(data, "pacientes")}
+      >
+        <Text style={styles.buttonText}>Exportar</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -14,8 +37,20 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "stretch",
+    backgroundColor: "#fff",
+    justifyContent: "center",
+  },
+  button: {
+    height: 50,
+    borderRadius: 6,
+    marginHorizontal: 30,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#55caee",
+  },
+  buttonText: {
+    color: "#fdfafe",
+    fontWeight: "bold",
   },
 });
